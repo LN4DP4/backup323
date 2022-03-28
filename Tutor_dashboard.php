@@ -24,9 +24,9 @@
             $user = unserialize($_SESSION['user']);
         }
     
-        else{
-            header("Location: /Gibjohn/Student_login.php");
-        }
+        //else{
+            //header("Location: /Gibjohn/Student_login.php");
+        //}
     
         
         $servername = "localhost";
@@ -35,6 +35,7 @@
         $dbname = "gibjohn";
         $Login_student_id = "1";
         $progress = "";
+
     
         //echo($user->email);
         //echo($user->password);
@@ -141,13 +142,31 @@
             
         }
 
-        function Student_visibility($Student_page){
+        //<new>
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+         if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+        }
+       
+        $sql = "SELECT student_id, first_name, last_name, email, password, status FROM student";
+        $result = $conn->query($sql);
+        $count = 0;
+
+        while($row = $result->fetch_assoc()) {
+            $count = $count+1;
+            $line = "<br>". $row["student_id"]. " ". $row["first_name"]. " " . $row["last_name"] ." ". $row["email"] ." ". $row["password"] ." ". $row["status"] . "<br>";
+            //echo $line;
+        }
+
+        $_SESSION['count'] = $count;
+
+        function Student_visibility($Student_page, $student){
+           
+
             if (array_key_exists('page1S',$_POST)){
                 $Spage = "1";
-                if($Student_page == $Spage){
-                    $_SESSION["page1S"] = "visible";
-                    $_SESSION["page2S"] = "hidden";
-                    $_SESSION["page3S"] = "hidden";
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
                     echo "visible";
                     
                 }
@@ -159,10 +178,7 @@
 
             elseif (array_key_exists('page2S',$_POST)){
                 $Spage = "2";
-                if($Student_page == $Spage){
-                    $_SESSION["page1S"] = "hidden";
-                    $_SESSION["page2S"] = "visible";
-                    $_SESSION["page3S"] = "hidden";
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
                     echo "visible";
                 }
     
@@ -173,10 +189,7 @@
 
             elseif (array_key_exists('page3S',$_POST)){
                 $Spage = "3";
-                if($Student_page == $Spage){
-                    $_SESSION["page1S"] = "hidden";
-                    $_SESSION["page2S"] = "hidden";
-                    $_SESSION["page3S"] = "visible";
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
                     echo "visible";
                 }
     
@@ -187,7 +200,150 @@
 
             elseif (array_key_exists('page4S',$_POST)){
                 $Spage = "4";
-                if($Student_page == $Spage){
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
+                    echo "visible";
+                }
+    
+                else{
+                    echo "hidden";
+                }
+            }
+
+            elseif (array_key_exists('page5S',$_POST)){
+                $Spage = "5";
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
+                    echo "visible";
+                }
+    
+                else{
+                    echo "hidden";
+                }
+            }
+
+            elseif (array_key_exists('page5S',$_POST)){
+                $Spage = "5";
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
+                    echo "visible";
+                }
+    
+                else{
+                    echo "hidden";
+                }
+            }
+
+            elseif (array_key_exists('page6S',$_POST)){
+                $Spage = "6";
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
+                    echo "visible";
+                }
+    
+                else{
+                    echo "hidden";
+                }
+            }
+
+            elseif (array_key_exists('page7S',$_POST)){
+                $Spage = "7";
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
+                    echo "visible";
+                }
+    
+                else{
+                    echo "hidden";
+                }
+            }
+
+            elseif (array_key_exists('page8S',$_POST)){
+                $Spage = "8";
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
+                    echo "visible";
+                }
+    
+                else{
+                    echo "hidden";
+                }
+            }
+
+            elseif (array_key_exists('page9S',$_POST)){
+                $Spage = "9";
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
+                    echo "visible";
+                }
+    
+                else{
+                    echo "hidden";
+                }
+            }
+
+            elseif (array_key_exists('page10S',$_POST)){
+                $Spage = "10";
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
+                    echo "visible";
+                }
+    
+                else{
+                    echo "hidden";
+                }
+            }
+
+            elseif (array_key_exists('page11S',$_POST)){
+                $Spage = "11";
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
+                    echo "visible";
+                }
+    
+                else{
+                    echo "hidden";
+                }
+            }
+
+            elseif (array_key_exists('page12S',$_POST)){
+                $Spage = "12";
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
+                    echo "visible";
+                }
+    
+                else{
+                    echo "hidden";
+                }
+            }
+
+            elseif (array_key_exists('page13S',$_POST)){
+                $Spage = "13";
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
+                    echo "visible";
+                }
+    
+                else{
+                    echo "hidden";
+                }
+            }
+
+            elseif (array_key_exists('page14S',$_POST)){
+                $Spage = "14";
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
+                    echo "visible";
+                }
+    
+                else{
+                    echo "hidden";
+                }
+            }
+
+            elseif (array_key_exists('page15S',$_POST)){
+                $Spage = "15";
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
+                    echo "visible";
+                }
+    
+                else{
+                    echo "hidden";
+                }
+            }
+
+            elseif (array_key_exists('page4S',$_POST)){
+                $Spage = "16";
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
                     echo "visible";
                 }
     
@@ -198,7 +354,7 @@
 
             else{
                 $Spage = "1";
-                if($Student_page == $Spage){
+                if($Student_page == $Spage and strval($student) <= $_SESSION['count']){
                     echo "visible";
                 }
     
@@ -207,6 +363,7 @@
                 }
             }
         }
+        //</new>
 
         function Course_visibility($course_page){
             if (array_key_exists('page1',$_POST)){
@@ -254,6 +411,80 @@
                 }
             }
         }
+
+        //<new>
+        function Button($button){
+            if ($button == 1 and 1 <= $_SESSION['count']){
+                echo 'visible';
+    
+            }
+
+            else if ($button == 2 and 7 <= $_SESSION['count'] ){
+                echo 'visible';
+            }
+
+            else if ($button == 3 and 13 <= $_SESSION['count'] ){
+                echo 'visible';
+            }
+
+            else if ($button == 4 and 19 <= $_SESSION['count'] ){
+                echo 'visible';
+            }
+
+            else if ($button == 5 and 25 <= $_SESSION['count'] ){
+                echo 'visible';
+            }
+
+            else if ($button == 6 and 31 <= $_SESSION['count'] ){
+                echo 'visible';
+            }
+
+            else if ($button == 7 and 37 <= $_SESSION['count'] ){
+                echo 'visible';
+            }
+
+            else if ($button == 8 and 43 <= $_SESSION['count'] ){
+                echo 'visible';
+            }
+
+            else if ($button == 9 and 49 <= $_SESSION['count'] ){
+                echo 'visible';
+            }
+
+            else if ($button == 10 and 55 <= $_SESSION['count'] ){
+                echo 'visible';
+            }
+
+            else if ($button == 11 and 61 <= $_SESSION['count'] ){
+                echo 'visible';
+            }
+
+            else if ($button == 12 and 67 <= $_SESSION['count'] ){
+                echo 'visible';
+            }
+
+            else if ($button == 13 and 73 <= $_SESSION['count'] ){
+                echo 'visible';
+            }
+
+            else if ($button == 14 and 79 <= $_SESSION['count'] ){
+                echo 'visible';
+            }
+
+            else if ($button == 15 and 85 <= $_SESSION['count'] ){
+                echo 'visible';
+            }
+
+            else if ($button == 16 and 91 <= $_SESSION['count'] ){
+                echo 'visible';
+            }
+
+            else{
+                echo 'hidden';
+                //echo $_SESSION['count'];
+            }
+        }
+        //</new>
     ?>
 </head>
 <body>
@@ -340,20 +571,43 @@
         <input type="submit" class="btn btn-primary" name="page3" id="page3" value="3"/>
     </form>
     
+    <!-- <new> -->
     <form class="pc2 rounded" style="border: 0px solid rgb(0, 0, 0);" method="post">
-        <input type="submit" class="btn btn-primary" name="page1S" id="page1S" value="1"/>
-        <input type="submit" class="btn btn-primary" name="page2S" id="page2S" value="2"/>
-        <input type="submit" class="btn btn-primary" name="page3S" id="page3S" value="3"/>
-        <input type="submit" class="btn btn-primary" name="page4S" id="page4S" value="s"/>
+        <input type="submit" class="btn btn-primary <?php Button("1") ?>" name="page1S" id="page1S" value="1"/>
+        <input type="submit" class="btn btn-primary <?php Button("2") ?>" name="page2S" id="page2S" value="2"/>
+        <input type="submit" class="btn btn-primary <?php Button("3") ?>" name="page3S" id="page3S" value="3"/>
+        <input type="submit" class="btn btn-primary <?php Button("4") ?>" name="page4S" id="page4S" value="4"/>
+        <input type="submit" class="btn btn-primary <?php Button("5") ?>" name="page5S" id="page5S" value="5"/>
+        <input type="submit" class="btn btn-primary <?php Button("6") ?>" name="page6S" id="page6S" value="6"/>
+        <input type="submit" class="btn btn-primary <?php Button("7") ?>" name="page7S" id="page7S" value="7"/>
+        <input type="submit" class="btn btn-primary <?php Button("8") ?>" name="page8S" id="page8S" value="8"/>
+        <input type="submit" class="btn btn-primary <?php Button("9") ?>" name="page9S" id="page9S" value="9"/>
+        <input type="submit" class="btn btn-primary <?php Button("10") ?>" name="page10S" id="page10S" value="10"/>
+        <input type="submit" class="btn btn-primary <?php Button("11") ?>" name="page11S" id="page11S" value="11"/>
+        <input type="submit" class="btn btn-primary <?php Button("12") ?>" name="page12S" id="page12S" value="12"/>
+        <input type="submit" class="btn btn-primary <?php Button("13") ?>" name="page13S" id="page13S" value="13"/>
+        <input type="submit" class="btn btn-primary <?php Button("14") ?>" name="page14S" id="page14S" value="14"/>
+        <input type="submit" class="btn btn-primary <?php Button("15") ?>" name="page15S" id="page15S" value="15"/>
+        <input type="submit" class="btn btn-primary <?php Button("16") ?>" name="page16S" id="page16S" value="16"/>
     </form>
+    
 
     <!-- page 1 students -->
-    <div class="s1 rounded tabs text-white <?php $Spage="1"; Student_visibility($Spage)?>">1</div>
-    <div class="s2 rounded tabs text-white <?php $Spage="1"; Student_visibility($Spage) ?>">2</div>
-    <div class="s3 rounded tabs text-white <?php $Spage="1"; Student_visibility($Spage) ?>">3</div>
-    <div class="s4 rounded tabs text-white <?php $Spage="1"; Student_visibility($Spage) ?>">4</div>
-    <div class="s5 rounded tabs text-white <?php $Spage="1"; Student_visibility($Spage) ?>">5</div>
-    <div class="s6 rounded tabs text-white <?php $Spage="1"; Student_visibility($Spage) ?>">6</div>
+    <div class="s1 rounded tabs text-white <?php $Spage="1"; $s="1"; Student_visibility($Spage, $s)?>">
+        <h4 class="title" >hello</h4> 
+        <img src="geography.jpg" class="subject_img">
+        <div class="VM">
+            <a class="vm" href="Student_dashboard.php?geography=true">
+                View More
+            </a>
+        </div>
+    </div>
+    <div class="s2 rounded tabs text-white <?php $Spage="1"; $s="2"; Student_visibility($Spage, $s) ?>">2</div>
+    <div class="s3 rounded tabs text-white <?php $Spage="1"; $s="3"; Student_visibility($Spage, $s) ?>">3</div>
+    <div class="s4 rounded tabs text-white <?php $Spage="1"; $s="4"; Student_visibility($Spage, $s) ?>">4</div>
+    <div class="s5 rounded tabs text-white <?php $Spage="1"; $s="5"; Student_visibility($Spage, $s) ?>">5</div>
+    <div class="s6 rounded tabs text-white <?php $Spage="1"; $s="6"; Student_visibility($Spage, $s) ?>">6</div>
+    <!-- </new> -->
 
     <!-- page 2 courses -->
     <div class="c5 rounded tabs text-white <?php $tpage="2"; Course_visibility($tpage) ?>">
@@ -431,30 +685,133 @@
         </div>
     </div>
 
+    <!-- <new> -->
     <!-- page2 students -->
-    <div class="s7 rounded tabs text-white <?php $Spage="2"; Student_visibility($Spage)?>">7</div>
-    <div class="s8 rounded tabs text-white <?php $Spage="2"; Student_visibility($Spage) ?>">8</div>
-    <div class="s9 rounded tabs text-white <?php $Spage="2"; Student_visibility($Spage) ?>">9</div>
-    <div class="s10 rounded tabs text-white <?php $Spage="2"; Student_visibility($Spage) ?>">10</div>
-    <div class="s11 rounded tabs text-white <?php $Spage="2"; Student_visibility($Spage) ?>">11</div>
-    <div class="s12 rounded tabs text-white <?php $Spage="2"; Student_visibility($Spage) ?>">12</div>
+    <div class="s7 rounded tabs text-white <?php $Spage="2"; $s="7"; Student_visibility($Spage, $s)?>">7</div>
+    <div class="s8 rounded tabs text-white <?php $Spage="2"; $s="8"; Student_visibility($Spage, $s) ?>">8</div>
+    <div class="s9 rounded tabs text-white <?php $Spage="2"; $s="9"; Student_visibility($Spage, $s) ?>">9</div>
+    <div class="s10 rounded tabs text-white <?php $Spage="2"; $s="10"; Student_visibility($Spage, $s) ?>">10</div>
+    <div class="s11 rounded tabs text-white <?php $Spage="2"; $s="11"; Student_visibility($Spage, $s) ?>">11</div>
+    <div class="s12 rounded tabs text-white <?php $Spage="2"; $s="12"; Student_visibility($Spage, $s) ?>">12</div>
 
     <!-- page3 students -->
-    <div class="s13 rounded tabs text-white <?php $Spage="3"; Student_visibility($Spage) ?>">13</div>
-    <div class="s14 rounded tabs text-white <?php $Spage="3"; Student_visibility($Spage) ?>">14</div>
-    <div class="s15 rounded tabs text-white <?php $Spage="3"; Student_visibility($Spage) ?>">15</div>
-    <div class="s16 rounded tabs text-white <?php $Spage="3"; Student_visibility($Spage) ?>">16</div>
-    <div class="s17 rounded tabs text-white <?php $Spage="3"; Student_visibility($Spage) ?>">17</div>
-    <div class="s18 rounded tabs text-white <?php $Spage="3"; Student_visibility($Spage) ?>">18</div>
+    <div class="s13 rounded tabs text-white <?php $Spage="3"; $s="13"; Student_visibility($Spage, $s) ?>">13</div>
+    <div class="s14 rounded tabs text-white <?php $Spage="3"; $s="14"; Student_visibility($Spage, $s) ?>">14</div>
+    <div class="s15 rounded tabs text-white <?php $Spage="3"; $s="15"; Student_visibility($Spage, $s) ?>">15</div>
+    <div class="s16 rounded tabs text-white <?php $Spage="3"; $s="16"; Student_visibility($Spage, $s) ?>">16</div>
+    <div class="s17 rounded tabs text-white <?php $Spage="3"; $s="17"; Student_visibility($Spage, $s) ?>">17</div>
+    <div class="s18 rounded tabs text-white <?php $Spage="3"; $s="18"; Student_visibility($Spage, $s) ?>">18</div>
 
     <!-- page4 students -->
-    <div class="s19 rounded tabs text-white <?php $Spage="4"; Student_visibility($Spage) ?>">19</div>
-    <div class="s20 rounded tabs text-white <?php $Spage="4"; Student_visibility($Spage) ?>">20</div>
-    <div class="s21 rounded tabs text-white <?php $Spage="4"; Student_visibility($Spage) ?>">21</div>
-    <div class="s22 rounded tabs text-white <?php $Spage="4"; Student_visibility($Spage) ?>">22</div>
-    <div class="s23 rounded tabs text-white <?php $Spage="4"; Student_visibility($Spage) ?>">23</div>
-    <div class="s24 rounded tabs text-white <?php $Spage="4"; Student_visibility($Spage) ?>">24</div>
+    <div class="s19 rounded tabs text-white <?php $Spage="4"; $s="19"; Student_visibility($Spage, $s) ?>">19</div>
+    <div class="s20 rounded tabs text-white <?php $Spage="4"; $s="20"; Student_visibility($Spage, $s) ?>">20</div>
+    <div class="s21 rounded tabs text-white <?php $Spage="4"; $s="21"; Student_visibility($Spage, $s) ?>">21</div>
+    <div class="s22 rounded tabs text-white <?php $Spage="4"; $s="22"; Student_visibility($Spage, $s) ?>">22</div>
+    <div class="s23 rounded tabs text-white <?php $Spage="4"; $s="23"; Student_visibility($Spage, $s) ?>">23</div>
+    <div class="s24 rounded tabs text-white <?php $Spage="4"; $s="24"; Student_visibility($Spage, $s) ?>">24</div>
 
+    <!-- page5 students -->
+    <div class="s25 rounded tabs text-white <?php $Spage="5"; $s="25"; Student_visibility($Spage, $s) ?>">25</div>
+    <div class="s26 rounded tabs text-white <?php $Spage="5"; $s="26"; Student_visibility($Spage, $s) ?>">26</div>
+    <div class="s27 rounded tabs text-white <?php $Spage="5"; $s="27"; Student_visibility($Spage, $s) ?>">27</div>
+    <div class="s28 rounded tabs text-white <?php $Spage="5"; $s="28"; Student_visibility($Spage, $s) ?>">28</div>
+    <div class="s29 rounded tabs text-white <?php $Spage="5"; $s="29"; Student_visibility($Spage, $s) ?>">29</div>
+    <div class="s30 rounded tabs text-white <?php $Spage="5"; $s="30"; Student_visibility($Spage, $s) ?>">30</div>
+
+    <!-- page6 students -->
+    <div class="s31 rounded tabs text-white <?php $Spage="6"; $s="31"; Student_visibility($Spage, $s) ?>">31</div>
+    <div class="s32 rounded tabs text-white <?php $Spage="6"; $s="32"; Student_visibility($Spage, $s) ?>">32</div>
+    <div class="s33 rounded tabs text-white <?php $Spage="6"; $s="33"; Student_visibility($Spage, $s) ?>">33</div>
+    <div class="s34 rounded tabs text-white <?php $Spage="6"; $s="34"; Student_visibility($Spage, $s) ?>">34</div>
+    <div class="s35 rounded tabs text-white <?php $Spage="6"; $s="35"; Student_visibility($Spage, $s) ?>">35</div>
+    <div class="s36 rounded tabs text-white <?php $Spage="6"; $s="36"; Student_visibility($Spage, $s) ?>">36</div>
+
+    <!-- page7 students -->
+    <div class="s37 rounded tabs text-white <?php $Spage="7"; $s="37"; Student_visibility($Spage, $s) ?>">37</div>
+    <div class="s38 rounded tabs text-white <?php $Spage="7"; $s="38"; Student_visibility($Spage, $s) ?>">38</div>
+    <div class="s39 rounded tabs text-white <?php $Spage="7"; $s="39"; Student_visibility($Spage, $s) ?>">39</div>
+    <div class="s40 rounded tabs text-white <?php $Spage="7"; $s="40"; Student_visibility($Spage, $s) ?>">40</div>
+    <div class="s41 rounded tabs text-white <?php $Spage="7"; $s="41"; Student_visibility($Spage, $s) ?>">41</div>
+    <div class="s42 rounded tabs text-white <?php $Spage="7"; $s="42"; Student_visibility($Spage, $s) ?>">42</div>
+
+    <!-- page8 students -->
+    <div class="s43 rounded tabs text-white <?php $Spage="8"; $s="43"; Student_visibility($Spage, $s) ?>">43</div>
+    <div class="s44 rounded tabs text-white <?php $Spage="8"; $s="44"; Student_visibility($Spage, $s) ?>">44</div>
+    <div class="s45 rounded tabs text-white <?php $Spage="8"; $s="45"; Student_visibility($Spage, $s) ?>">45</div>
+    <div class="s46 rounded tabs text-white <?php $Spage="8"; $s="46"; Student_visibility($Spage, $s) ?>">46</div>
+    <div class="s47 rounded tabs text-white <?php $Spage="8"; $s="47"; Student_visibility($Spage, $s) ?>">47</div>
+    <div class="s48 rounded tabs text-white <?php $Spage="8"; $s="48"; Student_visibility($Spage, $s) ?>">48</div>
+
+    <!-- page9 students -->
+    <div class="s49 rounded tabs text-white <?php $Spage="9"; $s="49"; Student_visibility($Spage, $s) ?>">49</div>
+    <div class="s50 rounded tabs text-white <?php $Spage="9"; $s="50"; Student_visibility($Spage, $s) ?>">50</div>
+    <div class="s51 rounded tabs text-white <?php $Spage="9"; $s="51"; Student_visibility($Spage, $s) ?>">51</div>
+    <div class="s52 rounded tabs text-white <?php $Spage="9"; $s="52"; Student_visibility($Spage, $s) ?>">52</div>
+    <div class="s53 rounded tabs text-white <?php $Spage="9"; $s="53"; Student_visibility($Spage, $s) ?>">53</div>
+    <div class="s54 rounded tabs text-white <?php $Spage="9"; $s="54"; Student_visibility($Spage, $s) ?>">54</div>
+
+     <!-- page10 students -->
+    <div class="s55 rounded tabs text-white <?php $Spage="10"; $s="55"; Student_visibility($Spage, $s) ?>">55</div>
+    <div class="s56 rounded tabs text-white <?php $Spage="10"; $s="56"; Student_visibility($Spage, $s) ?>">56</div>
+    <div class="s57 rounded tabs text-white <?php $Spage="10"; $s="57"; Student_visibility($Spage, $s) ?>">57</div>
+    <div class="s58 rounded tabs text-white <?php $Spage="10"; $s="58"; Student_visibility($Spage, $s) ?>">58</div>
+    <div class="s59 rounded tabs text-white <?php $Spage="10"; $s="59"; Student_visibility($Spage, $s) ?>">59</div>
+    <div class="s60 rounded tabs text-white <?php $Spage="10"; $s="60"; Student_visibility($Spage, $s) ?>">60</div>
+
+    <!-- page11 students -->
+    <div class="s61 rounded tabs text-white <?php $Spage="11"; $s="61"; Student_visibility($Spage, $s) ?>">61</div>
+    <div class="s62 rounded tabs text-white <?php $Spage="11"; $s="62"; Student_visibility($Spage, $s) ?>">62</div>
+    <div class="s63 rounded tabs text-white <?php $Spage="11"; $s="63"; Student_visibility($Spage, $s) ?>">63</div>
+    <div class="s64 rounded tabs text-white <?php $Spage="11"; $s="64"; Student_visibility($Spage, $s) ?>">64</div>
+    <div class="s65 rounded tabs text-white <?php $Spage="11"; $s="65"; Student_visibility($Spage, $s) ?>">65</div>
+    <div class="s66 rounded tabs text-white <?php $Spage="11"; $s="66"; Student_visibility($Spage, $s) ?>">66</div>
+
+    <!-- page12 students -->
+    <div class="s67 rounded tabs text-white <?php $Spage="12"; $s="67"; Student_visibility($Spage, $s) ?>">67</div>
+    <div class="s68 rounded tabs text-white <?php $Spage="12"; $s="68"; Student_visibility($Spage, $s) ?>">68</div>
+    <div class="s69 rounded tabs text-white <?php $Spage="12"; $s="69"; Student_visibility($Spage, $s) ?>">69</div>
+    <div class="s70 rounded tabs text-white <?php $Spage="12"; $s="70"; Student_visibility($Spage, $s) ?>">70</div>
+    <div class="s71 rounded tabs text-white <?php $Spage="12"; $s="71"; Student_visibility($Spage, $s) ?>">71</div>
+    <div class="s72 rounded tabs text-white <?php $Spage="12"; $s="72"; Student_visibility($Spage, $s) ?>">72</div>
+
+    <!-- page13 students -->
+    <div class="s73 rounded tabs text-white <?php $Spage="13"; $s="73"; Student_visibility($Spage, $s) ?>">73</div>
+    <div class="s74 rounded tabs text-white <?php $Spage="13"; $s="74"; Student_visibility($Spage, $s) ?>">74</div>
+    <div class="s75 rounded tabs text-white <?php $Spage="13"; $s="75"; Student_visibility($Spage, $s) ?>">75</div>
+    <div class="s76 rounded tabs text-white <?php $Spage="13"; $s="76"; Student_visibility($Spage, $s) ?>">76</div>
+    <div class="s77 rounded tabs text-white <?php $Spage="13"; $s="77"; Student_visibility($Spage, $s) ?>">77</div>
+    <div class="s78 rounded tabs text-white <?php $Spage="13"; $s="78"; Student_visibility($Spage, $s) ?>">78</div>
+
+    <!-- page14 students -->
+    <div class="s79 rounded tabs text-white <?php $Spage="14"; $s="79"; Student_visibility($Spage, $s) ?>">79</div>
+    <div class="s80 rounded tabs text-white <?php $Spage="14"; $s="80"; Student_visibility($Spage, $s) ?>">80</div>
+    <div class="s81 rounded tabs text-white <?php $Spage="14"; $s="81"; Student_visibility($Spage, $s) ?>">81</div>
+    <div class="s82 rounded tabs text-white <?php $Spage="14"; $s="82"; Student_visibility($Spage, $s) ?>">82</div>
+    <div class="s83 rounded tabs text-white <?php $Spage="14"; $s="83"; Student_visibility($Spage, $s) ?>">83</div>
+    <div class="s84 rounded tabs text-white <?php $Spage="14"; $s="84"; Student_visibility($Spage, $s) ?>">84</div>
+
+    <!-- page15 students -->
+    <div class="s85 rounded tabs text-white <?php $Spage="15"; $s="85"; Student_visibility($Spage, $s) ?>">85</div>
+    <div class="s86 rounded tabs text-white <?php $Spage="15"; $s="86"; Student_visibility($Spage, $s) ?>">86</div>
+    <div class="s87 rounded tabs text-white <?php $Spage="15"; $s="87"; Student_visibility($Spage, $s) ?>">87</div>
+    <div class="s88 rounded tabs text-white <?php $Spage="15"; $s="88"; Student_visibility($Spage, $s) ?>">88</div>
+    <div class="s89 rounded tabs text-white <?php $Spage="15"; $s="89"; Student_visibility($Spage, $s) ?>">89</div>
+    <div class="s90 rounded tabs text-white <?php $Spage="15"; $s="90"; Student_visibility($Spage, $s) ?>">90</div>
+
+    <!-- page16 students -->
+    <div class="s91 rounded tabs text-white <?php $Spage="16"; $s="91"; Student_visibility($Spage, $s) ?>">91</div>
+    <div class="s92 rounded tabs text-white <?php $Spage="16"; $s="92"; Student_visibility($Spage, $s) ?>">92</div>
+    <div class="s93 rounded tabs text-white <?php $Spage="16"; $s="93"; Student_visibility($Spage, $s) ?>">93</div>
+    <div class="s94 rounded tabs text-white <?php $Spage="16"; $s="94"; Student_visibility($Spage, $s) ?>">94</div>
+    <div class="s95 rounded tabs text-white <?php $Spage="16"; $s="95"; Student_visibility($Spage, $s) ?>">95</div>
+    <div class="s96 rounded tabs text-white <?php $Spage="16"; $s="96"; Student_visibility($Spage, $s) ?>">96</div>
+
+    <!-- page17 students -->
+    <div class="s97 rounded tabs text-white <?php $Spage="17"; $s="97"; Student_visibility($Spage, $s) ?>">97</div>
+    <div class="s98 rounded tabs text-white <?php $Spage="17"; $s="98"; Student_visibility($Spage, $s) ?>">98</div>
+    <div class="s99 rounded tabs text-white <?php $Spage="17"; $s="99"; Student_visibility($Spage, $s) ?>">99</div>
+    <div class="s100 rounded tabs text-white <?php $Spage="17"; $s="100"; Student_visibility($Spage, $s) ?>">100</div>
+    <!-- </new> -->
     
 </div>
 

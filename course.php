@@ -78,55 +78,7 @@
                 echo("Computing");
             }
         }
-        function content_height(){
-            if ($_SESSION['subject'] == "maths"){
-                echo("Mathmatics");
-            }
-
-            else if ($_SESSION['subject'] == "science"){
-                echo("Science");
-            }
-
-            else if ($_SESSION['subject'] == "english"){
-                echo("English");
-            }
-
-            else if ($_SESSION['subject'] == "history"){
-                echo("History");
-            }
-
-            else if ($_SESSION['subject'] == "geography"){
-                echo(strval(31*24)."px");
-            }
-
-            else if ($_SESSION['subject'] == "mfl"){
-                echo("Modern Foreign Languages");
-            }
-
-            else if ($_SESSION['subject'] == "dt"){
-                echo("Design and Technology");
-            }
-
-            else if ($_SESSION['subject'] == "ad"){
-                echo("Art and Design");
-            }
-
-            else if ($_SESSION['subject'] == "music"){
-                echo("Music");
-            }
-
-            else if ($_SESSION['subject'] == "pe"){
-                echo("Physical Education");
-            }
-
-            else if ($_SESSION['subject'] == "citizenship"){
-                echo("Citizenship");
-            }
-
-            else if ($_SESSION['subject'] == "computing"){
-                echo("Computing");
-            }
-        }
+    
 
         function content(){ 
             $line_number = 0;
@@ -307,6 +259,109 @@
         $ln = "3";
         links($ln);
     }
+
+    //<new>
+    function content_height(){
+        if ($_SESSION['subject'] == "maths"){
+            echo(strval(57*24)."px");
+        }
+
+        else if ($_SESSION['subject'] == "science"){
+            echo(strval(80*24)."px");
+        }
+
+        else if ($_SESSION['subject'] == "english"){
+            echo(strval(83*24)."px");
+        }
+
+        else if ($_SESSION['subject'] == "history"){
+            echo(strval(40*24)."px");
+        }
+
+        else if ($_SESSION['subject'] == "geography"){
+            echo(strval(37*24)."px");
+        }
+
+        else if ($_SESSION['subject'] == "mfl"){
+            echo(strval(28*24)."px");
+        }
+
+        else if ($_SESSION['subject'] == "dt"){
+            echo(strval(27*24)."px");
+        }
+
+        else if ($_SESSION['subject'] == "ad"){
+            echo(strval(25*24)."px");
+        }
+
+        else if ($_SESSION['subject'] == "music"){
+            echo(strval(27*24)."px");
+        }
+
+        else if ($_SESSION['subject'] == "pe"){
+            echo(strval(22*24)."px");
+        }
+
+        else if ($_SESSION['subject'] == "citizenship"){
+            echo(strval(29*24)."px");
+        }
+
+        else if ($_SESSION['subject'] == "computing"){
+            echo(strval(31*24)."px");
+        }
+    }
+
+    function box(){
+        if ($_SESSION['subject'] == "maths"){
+            echo("height: 165%");
+        }
+
+        else if ($_SESSION['subject'] == "science"){
+            echo("height: 220%");
+        }
+
+        else if ($_SESSION['subject'] == "english"){
+            echo("height: 230%");
+        }
+
+        else if ($_SESSION['subject'] == "history"){
+            echo("height: 122%");
+        }
+
+        else if ($_SESSION['subject'] == "geography"){
+            echo("height: 112%");
+        }
+
+        else if ($_SESSION['subject'] == "mfl"){
+            echo("height: 90%");
+        }
+
+        else if ($_SESSION['subject'] == "dt"){
+            echo("height: 90%");
+        }
+
+        else if ($_SESSION['subject'] == "ad"){
+            echo("height: 90%");
+        }
+
+        else if ($_SESSION['subject'] == "music"){
+            echo("height: 90%");
+        }
+
+        else if ($_SESSION['subject'] == "pe"){
+            echo("height: 90%");
+        }
+
+        else if ($_SESSION['subject'] == "citizenship"){
+            echo("height: 90%");
+        }
+
+        else if ($_SESSION['subject'] == "computing"){
+            echo("height: 102%");
+        }
+    }
+    //</new>
+
     ?>
 </head>
 <body>
@@ -354,7 +409,7 @@
     </div>
 </nav> 
 
-<div class="container">
+<div class="container" style="<?php $course = $_SESSION['subject']; box()  ?>"> <!-- style="height: 269%" -->
 
   <div class="title">
       <h2 class="text-white">

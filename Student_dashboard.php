@@ -83,7 +83,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
             
-        $sql = "SELECT course_id, student_id, tutor_id, course_name, progress, starting_date, starting_date status FROM course";
+        $sql = "SELECT course_id, student_id, tutor_id, course_name, progress, starting_date, status FROM course";
         $result = $conn->query($sql);
                 
         if ($result->num_rows > 0) {
@@ -199,8 +199,8 @@
                     if ($logged_in):
                 ?>
                 
-                <p>
-                    Hello, (name) <input type="submit" class="btn btn-primary" name="Logout" id="Logout" value="Logout">
+                <p style="color: white;">
+                    Hello, <?php echo $_SESSION['first_name'] ?> <input type="submit" class="btn btn-primary" name="Logout" id="Logout" value="Logout">
                 </p>
                 
                 <?php
