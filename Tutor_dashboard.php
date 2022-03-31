@@ -23,7 +23,9 @@
             $logged_in = true;
             $user = unserialize($_SESSION['user']);
         }
-    
+        
+        //$_SESSION['options'] = 'not_assigned';
+
         //else{
             //header("Location: /Gibjohn/Student_login.php");
         //}
@@ -33,38 +35,10 @@
         $username = "root";
         $password = "";
         $dbname = "gibjohn";
-        $Login_student_id = "1";
-        $progress = "";
 
-    
-        //echo($user->email);
-        //echo($user->password);
-        
-    
-    
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-           
-        $sql = "SELECT tutor_id, first_name, last_name, email, password, status FROM tutor";
-        $result = $conn->query($sql);
-    
-        while($row = $result->fetch_assoc()) {
-            $line = "<br>". $row["tutor_id"]. " ". $row["first_name"]. " " . $row["last_name"] ." ". $row["email"] ." ". $row["password"] ." ". $row["status"] . "<br>";
-            //echo" ";
-            $verify = password_verify($user->password, $row['password']);
-            //echo($row["password"]);
-            if ($row["email"] == $user->email && $verify == true){
-                $_SESSION['tutor_id'] = $row["tutor_id"];
-                $_SESSION['first_name'] = $row["first_name"];
-                $_SESSION['last_name'] = $row["last_name"];
-                $_SESSION['email'] = $row["email"];
-                $_SESSION['status'] = $row["status"];
-                //echo($_SESSION['student_id']." ".$_SESSION['first_name']." ".$_SESSION['last_name']." ".$_SESSION['email']." ".$_SESSION['status']);
-            }
+        function whatever($y){
+            $_SESSION['hello'] = $y;
+            //header('Location: /Gibjohn/Tutor_dashboard.php');
         }
 
         function course($subject) {
@@ -157,6 +131,18 @@
             $count = $count+1;
             $line = "<br>". $row["student_id"]. " ". $row["first_name"]. " " . $row["last_name"] ." ". $row["email"] ." ". $row["password"] ." ". $row["status"] . "<br>";
             //echo $line;
+            //echo($row["student_id"]);
+            //echo(strval($count));
+            $_SESSION['student_id'.strval($count)] = $row["student_id"];
+            $_SESSION['first_name'.strval($count)] = $row["first_name"];
+            $_SESSION['last_name'.strval($count)] = $row["last_name"];
+            $_SESSION['email'.strval($count)] = $row["email"];
+            $_SESSION['status'.strval($count)] = $row["status"];
+            //echo ($_SESSION['student_id'.strval($count)]);
+            //echo ($_SESSION['first_name'.strval($count)]);
+            //echo ($_SESSION['last_name'.strval($count)]);
+            //echo ($_SESSION['email'.strval($count)]);
+            //echo ($_SESSION['status'.strval($count)]);
         }
 
         $_SESSION['count'] = $count;
@@ -485,6 +471,10 @@
             }
         }
         //</new>
+
+        function student_name($id){
+            echo ($_SESSION['student_id'.$id]." ".$_SESSION['first_name'.$id]." ".$_SESSION['last_name'.$id]);
+        }
     ?>
 </head>
 <body>
@@ -594,13 +584,38 @@
 
     <!-- page 1 students -->
     <div class="s1 rounded tabs text-white <?php $Spage="1"; $s="1"; Student_visibility($Spage, $s)?>">
-        <h4 class="title" >hello</h4> 
-        <img src="geography.jpg" class="subject_img">
-        <div class="VM">
-            <a class="vm" href="Student_dashboard.php?geography=true">
-                View More
-            </a>
-        </div>
+        <h4 class="title" ><?php student_name("1");?></h4> 
+        <!-- <img src="geography.jpg" class="subject_img"> -->
+        <center style="border : 0px solid black">
+        <form style="border : 0px solid black">
+        
+            <select id="course" onchange="myFunction()" class="form-select form-select-lg" style="text-align:center; border: 0px solid black; width:52%">
+                <option>Pick a cource</option>
+                <option>Mathmatics</option>
+                <option>Science</option>
+                <option>English</option>
+                <option>History</option>
+                <option>Geography</option>
+                <option>Modern Foreign Languages</option>
+                <option>Design and Technology</option>
+                <option>Art and Design</option>
+                <option>Music</option>
+                <option>Physical Education</option>
+                <option>Citizenship</option>
+                <option>Computing</option>
+            </select> 
+            <!-- 0 = not_assigned-->
+            <?php       
+                if ($_SESSION['options'] == 'not_assigned'){ 
+                    echo '<button class="btn btn-primary"> Assign student to course </button>';
+                }
+
+                elseif($_SESSION['options'] == 'assigned'){
+                    echo '<button class="btn btn-primary"> Remove student from course </button> <button class="btn btn-primary"> Assign Progress </button>';
+                }
+            ?>
+        </form>
+        </center>
     </div>
     <div class="s2 rounded tabs text-white <?php $Spage="1"; $s="2"; Student_visibility($Spage, $s) ?>">2</div>
     <div class="s3 rounded tabs text-white <?php $Spage="1"; $s="3"; Student_visibility($Spage, $s) ?>">3</div>

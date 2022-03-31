@@ -8,6 +8,6 @@ if( ! isset($_POST["email"])){
 }
 var_dump($_POST);
 
-$user = new User($connection, $_POST['first_name'], $_POST["email"], $_POST["password"]);
+$user = new User($connection, $_POST['first_name'], $_POST['last_name'], $_POST["email"], $_POST["password"]);
 $user->insert();
 header("Location: /Gibjohn/Student_login.php");

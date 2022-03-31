@@ -1,14 +1,17 @@
 <?php
 
 class user {
+    public $first_name = "";
+    public $last_name = "";
     public $email = "";
     public $password = "";
     public $password_hash = "";
     public $authenticated = false;
     private $connection;
 
-    function __construct($connection, $first_name, $email, $password) {
+    function __construct($connection, $first_name, $last_name, $email, $password) {
         $this->first_name = mysqli_real_escape_string($connection, $first_name);
+        $this->last_name = mysqli_real_escape_string($connection, $last_name);
         $this->email = mysqli_real_escape_string($connection, $email);
         $this->password = mysqli_real_escape_string($connection, $password);
 
@@ -22,12 +25,14 @@ class user {
         $sql = "
         Insert INTO tutor(
             first_name,
+            last_name,
             email,
             password,
             status
         )
         VALUES (
             '{$this->first_name}',
+            '{$this->last_name}',
             '{$this->email}',
             '{$this->password_hash}',
             'active'
@@ -36,7 +41,7 @@ class user {
         
         $sqlQuery = mysqli_query($this->connection, $sql);
 
-        if(!$sqlQuery){
+        if(!$sqlQuery){}
 
             die("MySQL query failed!" . mysqli_error($this->connection));
         }
@@ -45,7 +50,7 @@ class user {
 
     function authenticate() {
         $sql = "
-            SELECT tutor_id, first_name, email, password, status
+            SELECT tutor_id, first_name, last_name, email, password, status
             FROM tutor
             WHERE email=\"{$this->email}\";
             ";
@@ -62,4 +67,4 @@ class user {
     function is_logged_in(){
         return $this->authenticated;
     }
-}
+ 

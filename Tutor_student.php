@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="LIP.css">
     <title>Document</title>
 <?php
+// directs you to the right page 
 session_start();
 if (array_key_exists('student',$_POST)){
     

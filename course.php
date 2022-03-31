@@ -29,6 +29,7 @@
             $user = unserialize($_SESSION['user']);
         }
         
+        //this finds the users subject they have clicked on in the dashboard and displays it as the title
         function title(){ 
             if ($_SESSION['subject'] == "maths"){
                 echo("Mathmatics");
@@ -80,7 +81,7 @@
         }
     
 
-        function content(){ 
+        function content(){ // this displays the subjects text file
             $line_number = 0;
             $file_name = $_SESSION['subject'].".txt";
             $myfile = fopen($file_name, "r") or die("Unable to open file!");
@@ -99,9 +100,9 @@
 
         
 
-        function progress($course_name){
+        function progress($course_name){ //this finds the progress assigned to the user, for the course they have chosen to display
         
-        
+            
             $servername = "localhost";
             $username = "root";
             $password = "";
@@ -135,6 +136,7 @@
             $conn->close();
         }
         //echo("25% - , 50% - , 75% - , 100% - ");
+        // this echos the cources steps popover
         function popover(){
             if ($_SESSION['subject'] == "maths"){
                 echo("16% - Numbers, 32% - Algebra, 48% - Ratio, proportion and rates of change, 64% - Geometry and measures, 80% - Probability, 100% - Statistics");
@@ -185,7 +187,7 @@
             }
         }
 
-    function links($link_number){
+    function links($link_number){ //this decides the users links depending on the cource they clicked
         if ($_SESSION['subject'] == "maths"){
             echo("");
         }
@@ -245,8 +247,8 @@
         }
         }
            
-    if (array_key_exists('btn1',$_POST)) {
-        $ln = "1";
+    if (array_key_exists('btn1',$_POST)) { //this gets called when one of the links buttons get clicked 
+        $ln = "1"; //this is to tell the function which button has been clicked
         links($ln);
         }
 
@@ -261,7 +263,7 @@
     }
 
     //<new>
-    function content_height(){
+    function content_height(){ //this decides the hieght of the textbox in which the courses .text file is displayed
         if ($_SESSION['subject'] == "maths"){
             echo(strval(57*24)."px");
         }
@@ -311,7 +313,7 @@
         }
     }
 
-    function box(){
+    function box(){ 
         if ($_SESSION['subject'] == "maths"){
             echo("height: 165%");
         }
@@ -360,7 +362,6 @@
             echo("height: 102%");
         }
     }
-    //</new>
 
     ?>
 </head>
@@ -435,6 +436,7 @@
         Steps
     </button>
     <script>
+        //this is for the popover
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
         return new bootstrap.Popover(popoverTriggerEl)

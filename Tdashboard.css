@@ -268,6 +268,10 @@
     border-radius: 1.9rem!important;
 }
 
+.bor{
+  border: 0px solid black;
+}
+
 .title{
     border: 1px solid rgb(255, 255, 255);
     font-family: 'Oswald', sans-serif;

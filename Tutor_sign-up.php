@@ -39,11 +39,15 @@
 </nav>
 
 <div class="container"style="padding: 50px; margin-top: 3em">
-    <h1>Sign up for an account!</h1>
+    <h1>Sign up for a tutor account!</h1>
     <form action="T_sign-up-action.php" method="post">
-    <div class="mb-3">
+        <div class="mb-3">
             <label for="exampleInputText1" class="form-label">First name</lable>
             <input name="first_name" type="text" class="form-control" id="exampleInputFirstname1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputText2" class="form-label">Last name</lable>
+            <input name="last_name" type="text" class="form-control" id="exampleInputLastname1">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</lable>
